@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import code.segael.bryantapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,13 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Picasso.get().load("https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg").into(binding.ivFoto);
         binding.tvCrearCuenta.setOnClickListener(v -> {
-            String correo = "";
-            if (binding.etCorreo.getText() != null) {
-                correo = binding.etCorreo.getText().toString();
-            }
             startActivity(new Intent(MainActivity.this, RegistroActivity.class));
-            RegistroActivity.correo = correo;
             finish();
         });
     }
